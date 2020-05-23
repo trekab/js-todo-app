@@ -11,15 +11,30 @@
       <main class="row">
         <aside id="left-sidebar" class="col-md-3 border border d-flex flex-column">
           <div class="d-flex justify-content-between align-items-center">
-            <h3 id="header" class="text-center">Tasks</h3>
-            <a data-toggle="collapse" href="#new-btn-set" role="button" aria-expanded="false" aria-controls="new-btn-set"><i class="add-button fas fa-plus-circle"></i></a>
+            <h3 id="header" class="text-center m-0">Tasks</h3>
+            <a class="p-1" data-toggle="collapse" href="#new-btn-set" role="button" aria-expanded="false" aria-controls="new-btn-set"><i class="add-button fas fa-plus-circle"></i></a>
           </div>
-          <div class="collapse d-flex" id="new-btn-set">
-            <button type="button" class="btn btn-primary rounded-pill w-100 m-1">Task</button>
-            <button type="button" class="btn btn-primary rounded-pill w-100 m-1">Project</button>
+          <div class="collapse" id="new-btn-set">
+            <div class="d-flex">
+              <button type="button" class="btn btn-primary rounded-pill w-100 m-1">Task</button>
+              <button type="button" class="btn btn-primary rounded-pill w-100 m-1">Project</button>
+            </div>
           </div>
           <button type="button" class="btn btn-secondary rounded-pill text-white  m-1">Today</button>
           <button type="button" class="btn btn-secondary rounded-pill text-white m-1">All</button>
+          <p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Link with href
+  </a>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-target
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+  </div>
+</div>
         </aside>
         <section id="main-section"  class="col-md-6  border">
           <h1>Today</h1>
