@@ -1,10 +1,23 @@
 
-.gradient {
-  background: #fffc00;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #ffffff, #fffc00);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #ffffff, #fffc00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+@font-face {
+  font-family: 'Pacifico';
+  src: url('../fonts/pacifico/Pacifico.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: 'Arimo-Regular';
+  src: url('../fonts/arimo/Arimo-Regular.ttf') format("truetype");
+}
+@font-face {
+  font-family: 'Arimo-Bold';
+  src: url('../fonts/arimo/Arimo-Bold.ttf') format("truetype");
+}
+
+body, html{
+  height: 100%;
+  font-family: 'Arimo-Regular' !important;
 }
 
 i {
-  font-size: 18px;
+  font-size: 25px;
 }
