@@ -19,10 +19,18 @@
   },
   "homepage": "https://github.com/aecordova/js-todo-app#readme",
   "devDependencies": {
-    "animate.css": "^4.1.0",
+    "autoprefixer": "^9.8.0",
     "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.5.3",
     "html-webpack-plugin": "^4.3.0",
+    "postcss-loader": "^3.0.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.0"
   }
 }
