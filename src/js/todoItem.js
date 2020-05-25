@@ -1,4 +1,4 @@
-class TodoItem {
+export default class TodoItem {
   constructor(title, description, dueDate, priority, checklist, done = false) {
     this.title = title;
     this.description = description;
@@ -8,3 +8,5 @@ class TodoItem {
     this.done = done;
   }
 }
+
+
