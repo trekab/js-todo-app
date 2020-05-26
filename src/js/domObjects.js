@@ -4,7 +4,7 @@ const ListItem = (item) => {
   const liTitle = document.createElement('input');
   const liCheck = document.createElement('i');
 
-  li.classList = 'list-group-item d-flex justify-content-between align-items-center';
+  li.classList = 'list-group-item d-flex justify-content-between px-1 align-items-center';
   liCheck.classList = 'far fa-circle d-block';
   liTitle.classList = 'w-100 item-title';
 

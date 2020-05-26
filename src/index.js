@@ -9,4 +9,6 @@ const listGroup = document.getElementById('list-group');
 todo.addEventListener('click', () => {
   const li = domItems.ListItem();
   listGroup.insertBefore(li, listGroup.firstChild);
+  const i = document.querySelector('.item-title');
+  console.log(i);
 });

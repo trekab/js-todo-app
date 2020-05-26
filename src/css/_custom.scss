@@ -28,9 +28,10 @@ i {
 
 .item-title {
   border: none;
+  margin-right: 10px;
 }
+
 .item-title:focus {
   outline: none;
   border-bottom: solid 1px lightgrey;
-  color: $primary;
 }
