@@ -25,3 +25,12 @@ i {
 .plus-btn{
   line-height: 40px;
 }
+
+.item-title {
+  border: none;
+}
+.item-title:focus {
+  outline: none;
+  border-bottom: solid 1px lightgrey;
+  color: $primary;
+}
