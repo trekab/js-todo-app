@@ -1,12 +1,20 @@
-export default class TodoItem {
-  constructor(title, description, dueDate, priority, checklist, done = false) {
-    this.title = title;
-    this.description = description;
-    this.dueDate = dueDate;
-    this.priority = priority;
-    this.checklist = checklist;
-    this.done = done;
-  }
-}
 
+const Item = {
+  title: '',
+  description: '',
+  dueDate: '',
+  priority: 4,
+  done: false,
+};
 
+const List = (name) => {
+  const items = [];
+
+  const addItems = (...args) => {
+    args.forEach(i => items.push(i));
+  };
+
+  return { name, items, addItems };
+};
+
+export default { Item, List };

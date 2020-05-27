@@ -1,5 +1,7 @@
-const ListItem = () => {
+const TodoListItem = (item) => {
+  const liDone = false;
   const li = document.createElement('li');
+  const liForm = document.createElement('form');
 
   const liTitleDiv = document.createElement('div');
   const liTitle = document.createElement('input');
@@ -46,7 +48,7 @@ const ListItem = () => {
   liToggleDetail['aria-controls'] = 'item-details-form';
 
   liDetail.classList = 'collapse';
-  liDetailTop.classList = 'form-group';
+  liDetailTop.classList = 'form-group m-0';
   liDescription.classList = 'w-100 border-0 bg-light';
   liDetailBottom.classList = 'form-inline d-flex justify-content-around';
   liDue.classList = 'form-group';
@@ -55,8 +57,8 @@ const ListItem = () => {
   liPriority.classList = 'form-group d-flex flex-no-wrap';
   liPriorityLbl.classList = 'form-control border-0 pr-1';
   liPriorityInput.classList = 'form-control border-0';
-  saveBtn.classList = 'fas fa-times-circle text-danger m-1';
-  cancelBtn.classList = 'fas fa-check-circle text-success m-1';
+  cancelBtn.classList = 'fas fa-times-circle text-danger m-1';
+  saveBtn.classList = 'fas fa-check-circle text-success m-1';
 
   liBtns.appendChild(cancelBtn);
   liBtns.appendChild(saveBtn);
@@ -85,13 +87,23 @@ const ListItem = () => {
   liTitleDiv.appendChild(liDelete);
   liTitleDiv.appendChild(liToggleDetail);
 
-  li.appendChild(liTitleDiv);
-  li.appendChild(liDetail);
+  liForm.appendChild(liTitleDiv);
+  liForm.appendChild(liDetail);
+
+  li.appendChild(liForm);
 
   const startEdit = () => {
     setTimeout(() => {
       liTitle.focus();
     }, 100);
+  };
+
+  const submit = (i) => {
+    i.title = liTitle.value;
+    i.description = liDescription.value;
+    i.dueDate = liDueInput.value;
+    i.priority = liPriorityInput.value;
+    i.done = liDone.value;
   };
 
   li.addEventListener('click', (e) => {
@@ -109,9 +121,20 @@ const ListItem = () => {
     if (e.target === liDelete) {
       li.remove();
     }
+
+    if (e.target === saveBtn) {
+      console.log('clicked save');
+      submit(item);
+      // collapse();
+    }
+    console.log(e.target);
   });
 
-  return { li, startEdit };
+  liForm.addEventListener('submit', () => {
+    console.log('submitted');
+    submit(item);
+  });
+  return { li, startEdit, submit };
 };
 
-export default { ListItem };
+export default { TodoListItem };
