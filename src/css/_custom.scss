@@ -32,7 +32,21 @@ i {
   margin-right: 10px;
 }
 
-.item-title:focus {
+.item-title:focus, textarea:focus {
   outline: none;
   border-bottom: dotted 1px lightgrey;
+}
+
+input::placeholder, 
+textarea::placeholder,
+input[type = 'date'],
+select, 
+option,label {
+  color: lightslategray !important;
+  font-size: smaller !important;
+}
+textarea{
+  background-color: rgba(206, 206, 198, 0.3);
+  border-radius: 10px;
+  padding: 10px;
 }

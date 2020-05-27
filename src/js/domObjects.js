@@ -13,12 +13,13 @@ const ListItem = () => {
   const liDetail = document.createElement('div');
   const liDetailTop = document.createElement('div');
   const liDescription = document.createElement('textarea');
-  liDescription.placeholder = 'Enter task details...'
+  liDescription.placeholder = 'Enter task details...';
 
   const liDetailBottom = document.createElement('div');
   const liDue = document.createElement('div');
   const liDueInput = document.createElement('input');
   liDueInput.type = 'date';
+  liDueInput.value = new Date().toISOString().substring(0, 10);
   const liDueLbl = document.createElement('label');
   liDueLbl.innerHTML = 'Due:';
 
@@ -30,7 +31,6 @@ const ListItem = () => {
   const liBtns = document.createElement('div');
   const saveBtn = document.createElement('i');
   const cancelBtn = document.createElement('i');
-
 
   li.classList = 'list-group-item p-0';
   liCheck.classList = 'far fa-circle m-2';
@@ -46,12 +46,12 @@ const ListItem = () => {
   liToggleDetail['aria-controls'] = 'item-details-form';
 
   liDetail.classList = 'collapse';
-  liDetailTop.classList = 'form-group d-flex border-top border-2';
-  liDescription.classList = 'w-100 border-0';
-  liDetailBottom.classList = 'form-inline d-flex justify-content-around border-top border-2';
+  liDetailTop.classList = 'form-group';
+  liDescription.classList = 'w-100 border-0 bg-light';
+  liDetailBottom.classList = 'form-inline d-flex justify-content-around';
   liDue.classList = 'form-group';
   liDueLbl.classList = 'pr-1';
-  liDueInput.classList = 'border-0';
+  liDueInput.classList = 'border-0 text-center';
   liPriority.classList = 'form-group d-flex flex-no-wrap';
   liPriorityLbl.classList = 'form-control border-0 pr-1';
   liPriorityInput.classList = 'form-control border-0';
@@ -106,6 +106,9 @@ const ListItem = () => {
       liCheck.classList.toggle('fa-circle');
     }
 
+    if (e.target === liDelete) {
+      li.remove();
+    }
   });
 
   return { li, startEdit };
