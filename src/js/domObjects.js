@@ -31,7 +31,9 @@ const TodoListItem = (item, list) => {
   const liPriorityInput = document.createElement('select');
 
   const liBtns = document.createElement('div');
-  const saveBtn = document.createElement('i');
+  const saveBtnIcon = document.createElement('i');
+  const saveBtn = document.createElement('button');
+  saveBtn.type = 'submit';
   const cancelBtn = document.createElement('i');
 
   li.classList = 'list-group-item p-0';
@@ -50,16 +52,19 @@ const TodoListItem = (item, list) => {
   liDetail.classList = 'collapse';
   liDetailTop.classList = 'form-group m-0';
   liDescription.classList = 'w-100 border-0 bg-light';
-  liDetailBottom.classList = 'form-inline d-flex justify-content-around';
-  liDue.classList = 'form-group';
-  liDueLbl.classList = 'pr-1';
+  liDetailBottom.classList = 'form-inline d-flex justify-content-around align-items-center';
+  liDue.classList = 'form-group m-0';
+  liDueLbl.classList = 'pr-1 m-0';
   liDueInput.classList = 'border-0 text-center';
-  liPriority.classList = 'form-group d-flex flex-no-wrap';
-  liPriorityLbl.classList = 'form-control border-0 pr-1';
+  liPriority.classList = 'form-group m-0 d-flex flex-no-wrap';
+  liPriorityLbl.classList = 'form-control border-0 pr-1 m-0';
   liPriorityInput.classList = 'form-control border-0';
+  liBtns.classList = 'form-group m-0';
   cancelBtn.classList = 'fas fa-times-circle text-danger m-1';
-  saveBtn.classList = 'fas fa-check-circle text-success m-1';
+  saveBtnIcon.classList = 'save-icon fas fa-check-circle text-success m-1';
+  saveBtn.classList = 'save-btn bg-transparent border-0';
 
+  saveBtn.appendChild(saveBtnIcon);
   liBtns.appendChild(cancelBtn);
   liBtns.appendChild(saveBtn);
   liPriority.appendChild(liPriorityLbl);
@@ -69,6 +74,9 @@ const TodoListItem = (item, list) => {
     const opt = document.createElement('option');
     opt.innerHTML = index;
     liPriorityInput.appendChild(opt);
+    if (index === 4) {
+      opt.selected = 'selected';
+    };
   }
 
   liDue.appendChild(liDueLbl);
@@ -98,12 +106,13 @@ const TodoListItem = (item, list) => {
     }, 100);
   };
 
-  const submit = (i) => {
+  const submit = (i, l) => {
     i.title = liTitle.value;
     i.description = liDescription.value;
     i.dueDate = liDueInput.value;
     i.priority = liPriorityInput.value;
     i.done = liDone.value;
+    l.items.push(i);
   };
 
   li.addEventListener('click', (e) => {
@@ -122,18 +131,17 @@ const TodoListItem = (item, list) => {
       li.remove();
     }
 
-    if (e.target === saveBtn) {
-      console.log('clicked save');
-      submit(item);
-    }
-    console.log(e.target);
+    // if (e.target === saveBtn) {
+    //   console.log('clicked save');
+    //   submit(item);
+    // }
   });
 
   liForm.addEventListener('submit', () => {
     console.log('submitted');
-    submit(item);
-    list.addItems(item);
+    submit(item, list);
   });
+
   return { li, startEdit, submit };
 };
 
