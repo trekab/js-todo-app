@@ -1,3 +1,5 @@
+import todoItems from './todoItem';
+
 const TodoListItem = (item, list) => {
   const liDone = false;
   const li = document.createElement('li');
@@ -76,7 +78,7 @@ const TodoListItem = (item, list) => {
     liPriorityInput.appendChild(opt);
     if (index === 4) {
       opt.selected = 'selected';
-    };
+    }
   }
 
   liDue.appendChild(liDueLbl);
@@ -130,11 +132,6 @@ const TodoListItem = (item, list) => {
     if (e.target === liDelete) {
       li.remove();
     }
-
-    // if (e.target === saveBtn) {
-    //   console.log('clicked save');
-    //   submit(item);
-    // }
   });
 
   liForm.addEventListener('submit', () => {
@@ -145,4 +142,49 @@ const TodoListItem = (item, list) => {
   return { li, startEdit, submit };
 };
 
-export default { TodoListItem };
+const TodoList = (list) => {
+  const listNode = document.createElement('div');
+  const header = listHeader(list.name);
+  const actualList = itemListContainer(list.items);
+
+  listNode.appendChild(header.container);
+  listNode.appendChild(actualList);
+
+  header.addButton.addEventListener('click', () => {
+    const newToDo = todoItems.Item;
+    const li = TodoListItem(newToDo, list);
+    actualList.appendChild(li.li);
+    li.startEdit();
+  });
+
+
+  return listNode;
+};
+
+const listHeader = (caption) => {
+  const container = document.createElement('div');
+  container.classList = 'd-flex justify-content-between align-items-center p-1 bg-light';
+  const title = document.createElement('h3');
+  title.classList = 'text-center w-100 m-0';
+  title.innerHTML = caption;
+  const addButton = document.createElement('a');
+  addButton.classList = 'p-1 d-block';
+  addButton.href = '#';
+  const icon = document.createElement('i');
+  icon.classList = 'plus-btn fas fa-plus-circle';
+
+  addButton.appendChild(icon);
+  container.appendChild(title);
+  container.appendChild(addButton);
+
+  return { container, title, addButton };
+};
+
+const itemListContainer = () => {
+  const itemList = document.createElement('ul');
+  itemList.classList = 'list-group list-group-flush';
+
+  return itemList;
+};
+
+export default { TodoListItem, TodoList };
