@@ -1,4 +1,4 @@
-const TodoListItem = (item) => {
+const TodoListItem = (item, list) => {
   const liDone = false;
   const li = document.createElement('li');
   const liForm = document.createElement('form');
@@ -125,7 +125,6 @@ const TodoListItem = (item) => {
     if (e.target === saveBtn) {
       console.log('clicked save');
       submit(item);
-      // collapse();
     }
     console.log(e.target);
   });
@@ -133,6 +132,7 @@ const TodoListItem = (item) => {
   liForm.addEventListener('submit', () => {
     console.log('submitted');
     submit(item);
+    list.addItems(item);
   });
   return { li, startEdit, submit };
 };

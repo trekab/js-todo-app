@@ -6,15 +6,16 @@ import domItems from './js/domObjects';
 
 const listGroup = document.getElementById('list-group');
 const addTodo = document.getElementById('add-todo');
+const allList = todoItems.List('All'); 
 const btn = document.querySelector('.btn-all');
-const td = todoItems.Item;
 
 btn.addEventListener('click', () => {
-  console.log(td);
+  console.log(allList);
 });
 
 addTodo.addEventListener('click', () => {
-  const li = domItems.TodoListItem(td);
+  const newToDo = todoItems.Item;
+  const li = domItems.TodoListItem(newToDo, allList);
   listGroup.insertBefore(li.li, listGroup.firstChild);
   li.startEdit();
 });

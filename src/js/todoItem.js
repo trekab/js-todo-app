@@ -17,4 +17,9 @@ const List = (name) => {
   return { name, items, addItems };
 };
 
+// const store = (list) => {
+//   window.localStorage.setItem('items', JSON.stringify(list.items));
+// };
+
 export default { Item, List };
+
