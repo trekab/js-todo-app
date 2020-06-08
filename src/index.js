@@ -13,11 +13,11 @@ main.appendChild(domItems.TodoList(allToDos));
 
 // const listGroup = document.getElementById('list-group');
 // const addTodo = document.getElementById('add-todo');
-// const btn = document.querySelector('.btn-all');
+const btn = document.querySelector('.btn-all');
 
-// btn.addEventListener('click', () => {
-//   console.log(allToDos);
-// });
+btn.addEventListener('click', () => {
+  console.log(allToDos);
+});
 
 // addTodo.addEventListener('click', () => {
 //   const newToDo = todoItems.Item;

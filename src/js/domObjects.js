@@ -157,7 +157,6 @@ const TodoList = (list) => {
     li.startEdit();
   });
 
-
   return listNode;
 };
 
