@@ -1,6 +1,6 @@
 import todoItems from './todoItem';
 
-const TodoListItem = (item, list) => {
+const TodoListItem = (list) => {
   const liDone = false;
   const li = document.createElement('li');
   const liForm = document.createElement('form');
@@ -136,39 +136,23 @@ const TodoListItem = (item, list) => {
   });
 
   liForm.addEventListener('submit', () => {
-    console.log('submitted');
+    console.log('submitted', list);
     submit(list);
   });
 
-  return { li, startEdit, submit };
+  return { li, startEdit, submit, liTitle };
 };
 
 const TodoList = (list) => {
   const listNode = document.createElement('div');
   const header = listHeader(list.name);
   const actualList = itemListContainer(list.items);
-  const renderLi = (list) => {
-    list.items.forEach((item) => {
-      const newLi = TodoListItem();
-    //   i.title = liTitle.value;
-    // i.description = liDescription.value;
-    // i.dueDate = liDueInput.value;
-    // i.priority = liPriorityInput.value;
-    // i.done = liDone.value;
-    newLi.li.liTitleDiv.value = item.title;
-    actualList.appendChild(newLi);
-    })
-  };
-  if (list.length > 0){
-    renderLi(list);
-  }
-  
+
   listNode.appendChild(header.container);
   listNode.appendChild(actualList);
 
   header.addButton.addEventListener('click', () => {
-    const newToDo = todoItems.Item;
-    const li = TodoListItem(newToDo, list);
+    const li = TodoListItem(list);
     actualList.appendChild(li.li);
     li.startEdit();
   });
@@ -195,11 +179,22 @@ const listHeader = (caption) => {
   return { container, title, addButton };
 };
 
-const itemListContainer = () => {
-  const itemList = document.createElement('ul');
-  itemList.classList = 'list-group list-group-flush';
+const itemListContainer = (itemList) => {
+  const itemUL = document.createElement('ul');
+  itemUL.classList = 'list-group list-group-flush';
+  
+  itemList.forEach((item) => {
+    const newLi = TodoListItem(itemList);
+  //   i.title = liTitle.value;
+  // i.description = liDescription.value;
+  // i.dueDate = liDueInput.value;
+  // i.priority = liPriorityInput.value;
+  // i.done = liDone.value;
+    newLi.liTitle.value = item.title;
+    itemUL.appendChild(newLi.li);
+  })
 
-  return itemList;
+  return itemUL;
 };
 
 export default { TodoListItem, TodoList };

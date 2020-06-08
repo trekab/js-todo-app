@@ -19,7 +19,7 @@ upcoming.addEventListener('click', () => {
 // const addTodo = document.getElementById('add-todo');
 const btn = document.querySelector('.btn-all');
 
-btn.addEventListener('click', (allToDos) => {
+btn.addEventListener('click', () => {
   allToDos.name = 'All';
   main.innerHTML = '';
   main.appendChild(domItems.TodoList(allToDos));
