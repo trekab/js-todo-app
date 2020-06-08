@@ -4,19 +4,25 @@ import todoItems from './js/todoItem';
 import domItems from './js/domObjects';
 
 const allToDos = todoItems.List;
-allToDos.name = 'All';
+//allToDos.name = 'All';
 
 const main = document.getElementById('main-section');
+const upcoming = document.querySelector('.btn-upcoming');
+upcoming.addEventListener('click', () => {
+  main.innerHTML = '';
+});
 
 
-main.appendChild(domItems.TodoList(allToDos));
+//main.appendChild(domItems.TodoList(allToDos));
 
 // const listGroup = document.getElementById('list-group');
 // const addTodo = document.getElementById('add-todo');
 const btn = document.querySelector('.btn-all');
 
-btn.addEventListener('click', () => {
-  console.log(allToDos);
+btn.addEventListener('click', (allToDos) => {
+  allToDos.name = 'All';
+  main.innerHTML = '';
+  main.appendChild(domItems.TodoList(allToDos));
 });
 
 // addTodo.addEventListener('click', () => {

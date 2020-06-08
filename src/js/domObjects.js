@@ -108,7 +108,8 @@ const TodoListItem = (item, list) => {
     }, 100);
   };
 
-  const submit = (i, l) => {
+  const submit = (l) => {
+    const i = todoItems.Item;
     i.title = liTitle.value;
     i.description = liDescription.value;
     i.dueDate = liDueInput.value;
@@ -136,7 +137,7 @@ const TodoListItem = (item, list) => {
 
   liForm.addEventListener('submit', () => {
     console.log('submitted');
-    submit(item, list);
+    submit(list);
   });
 
   return { li, startEdit, submit };
@@ -146,7 +147,22 @@ const TodoList = (list) => {
   const listNode = document.createElement('div');
   const header = listHeader(list.name);
   const actualList = itemListContainer(list.items);
-
+  const renderLi = (list) => {
+    list.items.forEach((item) => {
+      const newLi = TodoListItem();
+    //   i.title = liTitle.value;
+    // i.description = liDescription.value;
+    // i.dueDate = liDueInput.value;
+    // i.priority = liPriorityInput.value;
+    // i.done = liDone.value;
+    newLi.li.liTitleDiv.value = item.title;
+    actualList.appendChild(newLi);
+    })
+  };
+  if (list.length > 0){
+    renderLi(list);
+  }
+  
   listNode.appendChild(header.container);
   listNode.appendChild(actualList);
 
