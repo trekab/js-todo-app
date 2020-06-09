@@ -7,6 +7,7 @@ const TodoListItem = (list) => {
 
   const liTitleDiv = document.createElement("div");
   const liTitle = document.createElement("input");
+  liTitle.required = true;
   liTitle.type = "text";
   liTitle.placeholder = "Enter task title...";
   const liCheck = document.createElement("i");
@@ -165,8 +166,11 @@ const TodoList = (list) => {
 
   header.addButton.addEventListener("click", () => {
     const li = TodoListItem(list);
-    actualList.insertBefore(li.li, actualList.firstChild);
-    li.startEdit();
+    if(!actualList.querySelector('li[data-new=true]')){
+      actualList.insertBefore(li.li, actualList.firstChild);      
+      li.li.dataset.new = true;
+      li.startEdit();
+    }
   });
 
   return listNode;
