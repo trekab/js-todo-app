@@ -110,6 +110,7 @@ const TodoListItem = (list) => {
 
   const submit = (l) => {
     const i = { ...todoItems.Item };
+    i.id = generateId(l.items);
     i.title = liTitle.value;
     i.description = liDescription.value;
     i.dueDate = liDueInput.value;
@@ -140,7 +141,9 @@ const TodoListItem = (list) => {
     submit(list);
   });
 
-  return { li, startEdit, submit, liTitle };
+  return {
+    li, startEdit, submit, liTitle, liDescription, liDueInput, liPriorityInput, liDone 
+  };
 };
 
 const TodoList = (list) => {
@@ -153,7 +156,7 @@ const TodoList = (list) => {
 
   header.addButton.addEventListener('click', () => {
     const li = TodoListItem(list);
-    actualList.appendChild(li.li);
+    actualList.insertBefore(li.li, actualList.firstChild);
     li.startEdit();
   });
 
@@ -182,19 +185,26 @@ const listHeader = (caption) => {
 const itemListContainer = (itemList) => {
   const itemUL = document.createElement('ul');
   itemUL.classList = 'list-group list-group-flush';
-  
+
   itemList.forEach((item) => {
     const newLi = TodoListItem(itemList);
-  //   i.title = liTitle.value;
-  // i.description = liDescription.value;
-  // i.dueDate = liDueInput.value;
-  // i.priority = liPriorityInput.value;
-  // i.done = liDone.value;
     newLi.liTitle.value = item.title;
+    newLi.liDescription.value = item.description;
+    newLi.liDueInput.value = item.dueDate;
+    newLi.liPriorityInput.value = item.priority;
+    newLi.liDone.value = item.done;
     itemUL.appendChild(newLi.li);
-  })
+  });
 
   return itemUL;
+};
+
+const generateId = (list) => {
+  const ids = list.map(i => i.id);
+  if (ids.length === 0) {
+    return 0;
+  }
+  return Math.max(...ids) + 1;
 };
 
 export default { TodoListItem, TodoList };
