@@ -119,6 +119,20 @@ const TodoListItem = (list) => {
     i.priority = liPriorityInput.value;
     i.done = liDone.value;
     l.items.push(i);
+    console.log(l);
+  };
+
+  const edit = (list, id) => {
+    const listObjects = list.items
+    listObjects.forEach(item => {
+      if (item.id == id){
+        item.title = liTitle.value;
+        item.description = liDescription.value;
+        item.dueDate = liDueInput.value;
+        item.priority = liPriorityInput.value;
+        item.done = liDone.value;
+      }
+    });
   };
 
   li.addEventListener("click", (e) => {
@@ -140,8 +154,12 @@ const TodoListItem = (list) => {
   });
 
   liForm.addEventListener("submit", () => {
-    console.log("submitted", list);
-    submit(list);
+    console.log("submitted", list, li.dataset.id);
+    if(li.dataset.new){
+      submit(list);
+    }else {
+      edit(list, li.dataset.id);
+    }
   });
 
   return {
