@@ -119,7 +119,7 @@ const TodoListItem = (list) => {
     i.priority = liPriorityInput.value;
     i.done = liDone.value;
     l.items.push(i);
-    console.log(l);
+    // console.log(l);
   };
 
   const edit = (list, id) => {
@@ -183,6 +183,22 @@ const TodoListItem = (list) => {
     done: liDone,
   };
 };
+
+const ProjectList = (list, name) => {
+  const listNode = document.createElement("div");
+  const header = listHeader(list.name);
+  const actualList = listBody(list);
+
+  listNode.appendChild(header.container);
+  listNode.appendChild(actualList);
+
+  header.addButton.addEventListener("click", () => {
+    const sideBar = document.getElementById('left-sidebar');
+    sideBar.innerHTML += `<button type="button" class="btn btn-info rounded-pill text-white p-1 m-1">${name}</button>`
+  });
+
+  return listNode;
+}
 
 const TodoList = (list) => {
   const listNode = document.createElement("div");
@@ -258,9 +274,9 @@ const renderList = (ul, itemList) => {
     newItem.priority.value = i.priority;
     // newItem.done = i.done;
     ul.appendChild(newItem.li);
-    console.log(i);
-    console.log(newItem);
+    // console.log(i);
+    // console.log(newItem);
   });
 };
 
-export default { TodoListItem, TodoList };
+export default { TodoListItem, TodoList, ProjectList };
