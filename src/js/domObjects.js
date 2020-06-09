@@ -109,7 +109,7 @@ const TodoListItem = (list) => {
   };
 
   const submit = (l) => {
-    const i = todoItems.Item;
+    const i = { ...todoItems.Item };
     i.title = liTitle.value;
     i.description = liDescription.value;
     i.dueDate = liDueInput.value;
