@@ -135,6 +135,15 @@ const TodoListItem = (list) => {
     });
   };
 
+  const deleteListItem = (list, id) => {
+    const listObjects = list.items
+    listObjects.forEach(item => {
+      if (item.id == id){
+        listObjects.splice(listObjects.indexOf(item), 1);
+      }
+    });
+  }
+
   li.addEventListener("click", (e) => {
     if (e.target === liCaret || e.target === liToggleDetail) {
       liDetail.classList.toggle("collapse");
@@ -150,6 +159,7 @@ const TodoListItem = (list) => {
     if (e.target === liDelete) {
       li.remove();
       //remove from the memory list
+      deleteListItem(list, li.dataset.id);
     }
   });
 
