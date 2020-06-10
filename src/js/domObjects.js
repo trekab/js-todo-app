@@ -203,10 +203,11 @@ const ProjectListItem = (list) => {
   btnForm.addEventListener('submit', () => {
     const newProject = { ...todoItems.List };
     newProject.name = btnName.value
+    newProject.items = [];
     list.items.push(newProject);
   });
 
-  return { startEdit, btn, name: btnName };
+  return { startEdit, btn, name: btnName, form: btnForm };
 };
 
 const ProjectList = (list) => {
@@ -224,9 +225,21 @@ const ProjectList = (list) => {
       newProject.btn.dataset.new = true;
       newProject.startEdit();
     }
+  });
 
-
-
+  actualList.addEventListener('click', (e) => {
+    const mainSection = document.getElementById('main-section');
+    const listName = e.target.dataset.name
+    list.items.forEach((item) => {
+      if(listName === item.name){
+        setTimeout(() => {
+          const todo = TodoList(item);
+          mainSection.innerHTML = "";
+          mainSection.append(todo);
+        }, 300);
+      }
+    });
+ 
   });
 
   return listNode;
@@ -301,6 +314,8 @@ const renderList = (ul, itemList, type = 'todo') => {
       const newItem = ProjectListItem(itemList);
       newItem.name.value = i.name;
       newItem.btn.dataset.name = i.name;
+      newItem.name.dataset.name = i.name;
+      newItem.form.dataset.name = i.name;
       ul.appendChild(newItem.btn);
     } else {
       const newItem = TodoListItem(itemList);
