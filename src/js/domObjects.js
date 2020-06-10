@@ -194,13 +194,19 @@ const ProjectListItem = (list) => {
   btnForm.appendChild(btnName);
   btnForm.appendChild(submit);
 
+  const startEdit = () => {
+    setTimeout(() => {
+      btnName.focus();
+    }, 100);
+  };
+
   btnForm.addEventListener('submit', () => {
     const newProject = { ...todoItems.List };
     newProject.name = btnName.value
     list.items.push(newProject);
   });
 
-  return { btn, name: btnName };
+  return { startEdit, btn, name: btnName };
 };
 
 const ProjectList = (list) => {
@@ -216,7 +222,7 @@ const ProjectList = (list) => {
     if (!actualList.querySelector('button[data-new=true]')) {
       actualList.insertBefore(newProject.btn, actualList.firstChild);
       newProject.btn.dataset.new = true;
-      // newProject.btn.startEdit();
+      newProject.startEdit();
     }
 
 
