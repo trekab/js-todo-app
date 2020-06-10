@@ -313,6 +313,7 @@ const renderList = (ul, itemList, type = 'todo') => {
     if (type === 'project') {
       const newItem = ProjectListItem(itemList);
       newItem.name.value = i.name;
+      newItem.name.readOnly = 'true';
       newItem.btn.dataset.name = i.name;
       newItem.name.dataset.name = i.name;
       newItem.form.dataset.name = i.name;
