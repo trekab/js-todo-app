@@ -30,6 +30,7 @@ i {
 .item-title {
   border: none;
   margin-right: 10px;
+
 }
 
 .item-title:focus, textarea:focus {
@@ -52,15 +53,12 @@ textarea{
   padding: 10px;
 }
 
-// .btn-cont {
-//   position: relative;
-//   display: inline-block;
-// }
-
-// .save-icon{
-//   position: absolute;
-//   left 2em;
-// }
+.project-name {
+  background-color: transparent;
+  text-align: center;
+  border: none;
+  outline: none;
+}
 
 
 
