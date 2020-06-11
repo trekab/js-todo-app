@@ -15,10 +15,3 @@ localStorage.setItem('projectlist', JSON.stringify(projectList));
 
 const sideBar = document.getElementById('left-sidebar');
 sideBar.appendChild(domItems.ProjectList(projectList));
-
-const title = document.querySelector('h3');
-
-title.addEventListener('click', () => {
-  localStorage.setItem('projectlist', JSON.stringify(projectList));
-});
-

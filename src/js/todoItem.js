@@ -14,6 +14,3 @@ const List = {
 
 export default { Item, List };
 
-// Projects - Project Name & Items
-
-// Items - Project Name & todos

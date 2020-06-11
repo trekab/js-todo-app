@@ -140,6 +140,7 @@ const TodoListItem = (list) => {
         listObjects.splice(listObjects.indexOf(item), 1);
       }
     });
+    updateList(list);
   };
 
   li.addEventListener('click', (e) => {
@@ -161,13 +162,30 @@ const TodoListItem = (list) => {
   });
 
   liForm.addEventListener('submit', () => {
-    console.log('submitted', list, li.dataset.id);
     if (li.dataset.new) {
       submit(list);
     } else {
       edit(list, li.dataset.id);
     }
+    updateList(list);
   });
+
+  const updateList = (list) => {
+    let projectList
+
+    if (localStorage.getItem('projectlist')) {
+      projectList = JSON.parse(localStorage.getItem('projectlist'));
+    } else {
+      projectList = todoItems.List;
+      projectList.name = 'Projects';
+    }
+    projectList.items.forEach((element) => {
+      if(element.name === list.name){
+        element.items = [...list.items];
+      }
+    });
+    localStorage.setItem('projectlist', JSON.stringify(projectList));
+  }
 
   return {
     li,
@@ -205,6 +223,7 @@ const ProjectListItem = (list) => {
     newProject.name = btnName.value;
     newProject.items = [];
     list.items.push(newProject);
+    localStorage.setItem('projectlist', JSON.stringify(list));
   });
 
   return {
@@ -238,7 +257,7 @@ const ProjectList = (list) => {
           const todo = TodoList(item);
           mainSection.innerHTML = '';
           mainSection.append(todo);
-        }, 300);
+        }, 100);
       }
     });
   });
@@ -327,10 +346,7 @@ const renderList = (ul, itemList, type = 'todo') => {
       newItem.desc.value = i.description;
       newItem.due.value = i.due;
       newItem.priority.value = i.priority;
-      // newItem.done = i.done;
       ul.appendChild(newItem.li);
-      // console.log(i);
-      // console.log(newItem);
     }
   });
 };
