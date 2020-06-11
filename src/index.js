@@ -3,8 +3,15 @@ import './css/main.scss';
 import todoItems from './js/todoItem';
 import domItems from './js/domObjects';
 
-const projectList = todoItems.List;
-projectList.name = 'Projects';
+let projectList
+
+if (localStorage.getItem('projectlist')) {
+  projectList = JSON.parse(localStorage.getItem('projectlist'));
+} else {
+  projectList = todoItems.List;
+  projectList.name = 'Projects';
+}
+localStorage.setItem('projectlist', JSON.stringify(projectList));
 
 const sideBar = document.getElementById('left-sidebar');
 sideBar.appendChild(domItems.ProjectList(projectList));
@@ -12,9 +19,6 @@ sideBar.appendChild(domItems.ProjectList(projectList));
 const title = document.querySelector('h3');
 
 title.addEventListener('click', () => {
-  console.log(projectList.name, projectList.items);
+  localStorage.setItem('projectlist', JSON.stringify(projectList));
 });
 
-// allToDos.name = 'All';
-// main.innerHTML = '';
-// main.appendChild(domItems.TodoList(allToDos));

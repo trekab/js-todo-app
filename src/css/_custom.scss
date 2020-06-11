@@ -1,29 +1,24 @@
 
-@font-face {
-  font-family: 'Pacifico';
-  src: url('../fonts/pacifico/Pacifico.ttf') format("truetype");
+h1,h2,h3,h4{
+  font-family: 'Space Mono', monospace !important;
+  font-weight: 700;
 }
 
-@font-face {
-  font-family: 'Arimo-Regular';
-  src: url('../fonts/arimo/Arimo-Regular.ttf') format("truetype");
-}
-@font-face {
-  font-family: 'Arimo-Bold';
-  src: url('../fonts/arimo/Arimo-Bold.ttf') format("truetype");
+header{
+  background-color: #512DA8;
 }
 
-body, html{
-  height: 100%;
-  font-family: 'Arimo-Regular' !important;
+body{
+  font-family: 'Work Sans', sans-serif !important;
+}
+
+a, i {
+  color: #512DA8;
+  font-size: 20px;
 }
 
 a:hover {
   text-decoration: none !important;
-}
-
-i {
-  font-size: 20px;
 }
 
 .delete-btn:hover{
