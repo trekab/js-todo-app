@@ -18,13 +18,21 @@ body, html{
   font-family: 'Arimo-Regular' !important;
 }
 
-i {
-  font-size: 18px;
+a:hover {
+  text-decoration: none !important;
 }
 
+i {
+  font-size: 20px;
+}
+
+.delete-btn:hover{
+  color: red; 
+}
 
 .plus-btn{
   line-height: 40px;
+  font-size: 25px;
 }
 
 .item-title {
@@ -35,7 +43,6 @@ i {
 
 .item-title:focus, textarea:focus {
   outline: none;
-  border-bottom: dotted 1px lightgrey;
 }
 
 input::placeholder, 

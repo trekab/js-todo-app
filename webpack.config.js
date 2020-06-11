@@ -2,12 +2,12 @@ const path = require('path');
 // eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies
-//const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   plugins: [
-//    new CleanWebpackPlugin(),
+    //    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
@@ -39,15 +39,15 @@ module.exports = {
         }, {
           loader: 'postcss-loader', // Run postcss actions
           options: {
-            plugins: function () { // postcss plugins, can be exported to postcss.config.js
+            plugins() { // postcss plugins, can be exported to postcss.config.js
               return [
-                require('autoprefixer')
+                require('autoprefixer'),
               ];
-            }
-          }
+            },
+          },
         }, {
-          loader: 'sass-loader' // compiles Sass to CSS
-        }]
+          loader: 'sass-loader', // compiles Sass to CSS
+        }],
       },
     ],
   },

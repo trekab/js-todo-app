@@ -11,10 +11,9 @@ sideBar.appendChild(domItems.ProjectList(projectList));
 
 const title = document.querySelector('h3');
 
-title.addEventListener('click', ()=>{
+title.addEventListener('click', () => {
   console.log(projectList.name, projectList.items);
-
-})
+});
 
 // allToDos.name = 'All';
 // main.innerHTML = '';

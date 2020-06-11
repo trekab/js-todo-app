@@ -43,7 +43,7 @@ const TodoListItem = (list) => {
   liCheck.classList = 'far fa-circle m-2';
   liTitleDiv.classList = 'd-flex justify-content-between align-items-center';
   liTitle.classList = 'w-100 item-title';
-  liDelete.classList = 'fas fa-times';
+  liDelete.classList = 'fas fa-times delete-btn';
   liCaret.classList = 'fas fa-chevron-down d-block m-2';
 
   liToggleDetail.classList = 'p-1 d-block';
@@ -55,7 +55,7 @@ const TodoListItem = (list) => {
   liDetail.classList = 'collapse';
   liDetailTop.classList = 'form-group m-0';
   liDescription.classList = 'w-100 border-0 bg-light';
-  liDetailBottom.classList = 'form-inline d-flex justify-content-around align-items-center';
+  liDetailBottom.classList = 'form-inline d-flex justify-content-end align-items-center';
   liDue.classList = 'form-group m-0';
   liDueLbl.classList = 'pr-1 m-0';
   liDueInput.classList = 'border-0 text-center';
@@ -188,8 +188,8 @@ const ProjectListItem = (list) => {
   submit.type = 'submit';
   const btnName = document.createElement('input');
   btn.classList = 'btn btn-info rounded-pill text-white p-1 m-1';
-  btnName.classList = 'project-name';
-  submit.classList = 'd-none'
+  btnName.classList = 'project-name w-100';
+  submit.classList = 'd-none';
   btn.appendChild(btnForm);
   btnForm.appendChild(btnName);
   btnForm.appendChild(submit);
@@ -202,12 +202,14 @@ const ProjectListItem = (list) => {
 
   btnForm.addEventListener('submit', () => {
     const newProject = { ...todoItems.List };
-    newProject.name = btnName.value
+    newProject.name = btnName.value;
     newProject.items = [];
     list.items.push(newProject);
   });
 
-  return { startEdit, btn, name: btnName, form: btnForm };
+  return {
+    startEdit, btn, name: btnName, form: btnForm,
+  };
 };
 
 const ProjectList = (list) => {
@@ -229,17 +231,16 @@ const ProjectList = (list) => {
 
   actualList.addEventListener('click', (e) => {
     const mainSection = document.getElementById('main-section');
-    const listName = e.target.dataset.name
+    const listName = e.target.dataset.name;
     list.items.forEach((item) => {
-      if(listName === item.name){
+      if (listName === item.name) {
         setTimeout(() => {
           const todo = TodoList(item);
-          mainSection.innerHTML = "";
+          mainSection.innerHTML = '';
           mainSection.append(todo);
         }, 300);
       }
     });
- 
   });
 
   return listNode;
@@ -272,7 +273,7 @@ const listHeader = (caption) => {
   title.classList = 'text-center w-100 m-0';
   title.innerHTML = caption;
   const addButton = document.createElement('a');
-  addButton.classList = 'p-1 d-block';
+  addButton.classList = 'p-2 d-block';
   addButton.href = '#';
   const icon = document.createElement('i');
   icon.classList = 'plus-btn fas fa-plus-circle';
@@ -322,6 +323,7 @@ const renderList = (ul, itemList, type = 'todo') => {
       const newItem = TodoListItem(itemList);
       newItem.li.dataset.id = i.id;
       newItem.title.value = i.title;
+      newItem.title.readOnly = true;
       newItem.desc.value = i.description;
       newItem.due.value = i.due;
       newItem.priority.value = i.priority;
