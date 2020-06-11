@@ -218,11 +218,35 @@ const ProjectListItem = (list) => {
     }, 100);
   };
 
+  const displayTodos = (e) => {
+    const mainSection = document.getElementById('main-section');
+    const listName = e.target.dataset.name;
+    list.items.forEach((item) => {
+      if (listName === item.name) {
+        setTimeout(() => {
+          const todo = TodoList(item);
+          mainSection.innerHTML = '';
+          mainSection.append(todo);
+        }, 100);
+      }
+    });
+  };
+
   btnForm.addEventListener('submit', () => {
     const newProject = { ...todoItems.List };
     newProject.name = btnName.value;
     newProject.items = [];
     list.items.push(newProject);
+    
+    const mainSection = document.getElementById('main-section');
+    setTimeout(() => {
+      const todo = TodoList(newProject);
+      mainSection.innerHTML = '';
+      mainSection.append(todo);
+    }, 100);
+      
+    
+
     localStorage.setItem('projectlist', JSON.stringify(list));
   });
 
