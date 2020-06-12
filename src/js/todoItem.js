@@ -13,4 +13,3 @@ const List = {
 };
 
 export default { Item, List };
-

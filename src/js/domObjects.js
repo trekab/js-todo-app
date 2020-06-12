@@ -1,3 +1,5 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable no-use-before-define */
 import todoItems from './todoItem';
 
 const TodoListItem = (list) => {
@@ -171,7 +173,7 @@ const TodoListItem = (list) => {
   });
 
   const updateList = (list) => {
-    let projectList
+    let projectList;
 
     if (localStorage.getItem('projectlist')) {
       projectList = JSON.parse(localStorage.getItem('projectlist'));
@@ -180,12 +182,12 @@ const TodoListItem = (list) => {
       projectList.name = 'Projects';
     }
     projectList.items.forEach((element) => {
-      if(element.name === list.name){
+      if (element.name === list.name) {
         element.items = [...list.items];
       }
     });
     localStorage.setItem('projectlist', JSON.stringify(projectList));
-  }
+  };
 
   return {
     li,
@@ -206,7 +208,7 @@ const ProjectListItem = (list) => {
   submit.type = 'submit';
   const btnName = document.createElement('input');
   btn.classList = 'btn btn-info rounded-pill text-white p-1 m-1';
-  btnName.classList = 'project-name w-100';
+  btnName.classList = 'project-name w-100 font-weight-bold text-white';
   submit.classList = 'd-none';
   btn.appendChild(btnForm);
   btnForm.appendChild(btnName);
@@ -218,34 +220,19 @@ const ProjectListItem = (list) => {
     }, 100);
   };
 
-  const displayTodos = (e) => {
-    const mainSection = document.getElementById('main-section');
-    const listName = e.target.dataset.name;
-    list.items.forEach((item) => {
-      if (listName === item.name) {
-        setTimeout(() => {
-          const todo = TodoList(item);
-          mainSection.innerHTML = '';
-          mainSection.append(todo);
-        }, 100);
-      }
-    });
-  };
-
   btnForm.addEventListener('submit', () => {
     const newProject = { ...todoItems.List };
     newProject.name = btnName.value;
     newProject.items = [];
     list.items.push(newProject);
-    
+
     const mainSection = document.getElementById('main-section');
     setTimeout(() => {
       const todo = TodoList(newProject);
       mainSection.innerHTML = '';
       mainSection.append(todo);
     }, 100);
-      
-    
+
 
     localStorage.setItem('projectlist', JSON.stringify(list));
   });
@@ -311,7 +298,7 @@ const TodoList = (list) => {
 
 const listHeader = (caption) => {
   const container = document.createElement('div');
-  container.classList = 'd-flex justify-content-between align-items-center p-1 bg-light';
+  container.classList = ' list-header d-flex justify-content-between align-items-center p-1 rounded-pill';
   const title = document.createElement('h3');
   title.classList = 'text-center w-100 m-0';
   title.innerHTML = caption;
