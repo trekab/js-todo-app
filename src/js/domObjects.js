@@ -349,6 +349,11 @@ const renderList = (ul, itemList, type = 'todo') => {
       newItem.name.dataset.name = i.name;
       newItem.form.dataset.name = i.name;
       ul.appendChild(newItem.btn);
+
+      newItem.name.addEventListener('dblclick', () => {
+        newItem.name.removeAttribute("readonly");
+      });
+
     } else {
       const newItem = TodoListItem(itemList);
       newItem.li.dataset.id = i.id;
@@ -358,6 +363,10 @@ const renderList = (ul, itemList, type = 'todo') => {
       newItem.due.value = i.due;
       newItem.priority.value = i.priority;
       ul.appendChild(newItem.li);
+
+      newItem.title.addEventListener('dblclick', () => {
+        newItem.title.removeAttribute("readonly");
+      });
     }
   });
 };

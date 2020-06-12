@@ -8,8 +8,8 @@ h1 {
   padding: .3em;
 }
 
-header{
-  background-color: #512DA8;
+header, .btn-info{
+  background-color: #512DA8 !important;
 }
 
 body{
@@ -77,6 +77,3 @@ textarea{
 form:hover, input:hover {
   cursor: pointer;
 }
-
-
-

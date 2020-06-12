@@ -3,7 +3,7 @@ import './css/main.scss';
 import todoItems from './js/todoItem';
 import domItems from './js/domObjects';
 
-let projectList
+let projectList;
 
 if (localStorage.getItem('projectlist')) {
   projectList = JSON.parse(localStorage.getItem('projectlist'));
