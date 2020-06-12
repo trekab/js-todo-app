@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies
 import 'bootstrap';
 import './css/main.scss';
 import todoItems from './js/todoItem';

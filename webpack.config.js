@@ -41,6 +41,7 @@ module.exports = {
           options: {
             plugins() { // postcss plugins, can be exported to postcss.config.js
               return [
+                // eslint-disable-next-line global-require
                 require('autoprefixer'),
               ];
             },

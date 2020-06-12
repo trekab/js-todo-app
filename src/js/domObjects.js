@@ -351,9 +351,8 @@ const renderList = (ul, itemList, type = 'todo') => {
       ul.appendChild(newItem.btn);
 
       newItem.name.addEventListener('dblclick', () => {
-        newItem.name.removeAttribute("readonly");
+        newItem.name.removeAttribute('readonly');
       });
-
     } else {
       const newItem = TodoListItem(itemList);
       newItem.li.dataset.id = i.id;
@@ -365,7 +364,7 @@ const renderList = (ul, itemList, type = 'todo') => {
       ul.appendChild(newItem.li);
 
       newItem.title.addEventListener('dblclick', () => {
-        newItem.title.removeAttribute("readonly");
+        newItem.title.removeAttribute('readonly');
       });
     }
   });
