@@ -19,11 +19,11 @@
 To get a local copy up and running follow these simple example steps.
 
 To get a local copy up and running follow these simple example steps.
-- git clone git@github.com:aecordova/js-todo-app.git
+- `git clone git@github.com:trekab/js-todo-app.git`
 
 Then you browse to the folder and exucute the following commands
-- cd js-todo-app
-- double click on the index.html file to open the game in your browser.
+- `cd js-todo-app`
+- double click on the `index.html` file to open the game in your browser.
 
 ### Instructions:
 - Click the PLUS button to ADD a project.
@@ -53,12 +53,6 @@ Feel free to check the [issues page](issues/).
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
 
 ## 📝 License
 
