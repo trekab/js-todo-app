@@ -31,6 +31,9 @@ Then you browse to the folder and exucute the following commands
 - Click the PLUS button in the project section to add project tasks.
 - Double click on the titles to edit them.
 
+### Future features:
+- Add tooltips to make the app more usable.
+
 ## Authors
 
 👤 **Treasure Kabareebe**
