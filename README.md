@@ -11,7 +11,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://js-todoapp.netlify.app/ )
+[Live Demo Link](https://trekab-js-todo-app.netlify.app/)
 
 
 ## Getting Started
