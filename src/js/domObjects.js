@@ -207,6 +207,7 @@ const ProjectListItem = (list) => {
   const submit = document.createElement('button');
   submit.type = 'submit';
   const btnName = document.createElement('input');
+  btnName.required = true;
   btn.classList = 'btn btn-info rounded-pill text-white p-1 m-1';
   btnName.classList = 'project-name w-100 font-weight-bold text-white';
   submit.classList = 'd-none';

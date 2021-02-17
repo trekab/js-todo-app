@@ -24,8 +24,7 @@ To get a local copy up and running follow these simple example steps.
 Then you browse to the folder and exucute the following commands
 - `cd js-todo-app`
 - `npm install`
-- `npm run build`
-- double click on the `index.html` file to open the game in your browser.
+- `npm run start`
 
 ### Instructions:
 - Click the PLUS button to ADD a project.
